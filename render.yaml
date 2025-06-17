@@ -1,0 +1,36 @@
+services:
+  - type: web
+    plan: free
+    runtime: image
+    name: n8n-with-supabase
+    image:
+      url: docker.io/n8nio/n8n:latest
+    envVars:
+      - key: N8N_ENCRYPTION_KEY
+        generateValue: true
+
+      - key: DB_TYPE
+        value: postgresdb
+      - key: DB_POSTGRESDB_HOST
+        value: ${DB_HOST}
+      - key: DB_POSTGRESDB_DATABASE
+        value: ${DB_NAME}
+      - key: DB_POSTGRESDB_USER
+        value: ${DB_USER}
+      - key: DB_POSTGRESDB_PASSWORD
+        value: ${DB_PASSWORD}
+      - key: DB_POSTGRESDB_PORT
+        value: "5432"
+
+      - key: GENERIC_TIMEZONE
+        value: Europe/Warsaw
+
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: "true"
+      - key: N8N_BASIC_AUTH_USER
+        value: admin
+      - key: N8N_BASIC_AUTH_PASSWORD
+        generateValue: true
+
+      - key: WEBHOOK_URL
+        value: https://n8n-with-supabase.onrender.com
