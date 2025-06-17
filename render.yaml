@@ -6,41 +6,31 @@ services:
     image:
       url: docker.io/n8nio/n8n:latest
     envVars:
-      # Główne zmienne n8n
       - key: N8N_ENCRYPTION_KEY
-        value: ${N8N_ENCRYPTION_KEY}
-
+        value: ""  # Wypełnij w panelu Render
       - key: GENERIC_TIMEZONE
-        value: ${GENERIC_TIMEZONE}
-
+        value: "Europe/Warsaw"
       - key: N8N_BASIC_AUTH_ACTIVE
-        value: ${N8N_BASIC_AUTH_ACTIVE}
+        value: "true"
       - key: N8N_BASIC_AUTH_USER
-        value: ${N8N_BASIC_AUTH_USER}
+        value: "admin"
       - key: N8N_BASIC_AUTH_PASSWORD
-        value: ${N8N_BASIC_AUTH_PASSWORD}
-
+        value: ""  # Wypełnij w panelu Render
       - key: WEBHOOK_URL
-        value: ${WEBHOOK_URL}
-
-      # Konfiguracja bazy danych Supabase
+        value: "https://n8n-with-supabase.onrender.com"
       - key: DB_TYPE
-        value: ${DB_TYPE}
+        value: "postgresdb"
       - key: DB_POSTGRESDB_HOST
-        value: ${DB_HOST}
+        value: "db.lvavxjzvezxzdeykxmto.supabase.co"
       - key: DB_POSTGRESDB_DATABASE
-        value: ${DB_NAME}
+        value: "postgres"
       - key: DB_POSTGRESDB_USER
-        value: ${DB_USER}
+        value: "wshoq"
       - key: DB_POSTGRESDB_PASSWORD
-        value: ${DB_PASSWORD}
+        value: ""  # Wypełnij w panelu Render
       - key: DB_POSTGRESDB_PORT
-        value: "${DB_PORT}"
-
-      # Wymuszamy poprawne prawa dostępu do pliku config
+        value: "5432"
       - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
         value: "true"
-
-      # (Opcjonalnie) dostęp do Supabase przez API, np. w HTTP request node
       - key: SUPABASE_API_KEY
-        value: ${SUPABASE_API_KEY}
+        value: ""  # Wypełnij w panelu Render
